@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-
-# class report(models.Model):
-#     _name = 'report.report'
-
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         self.value2 = float(self.value) / 100
+class report(models.Model):
+	_inherit = 'stock.picking'
+    value2 = fields.Integer(compute="_value_pc", store=True)
+    
+    @api.depends('state')
+    def _value_pc(self):
+        for record in self:
+            if('PICK' in record.name):
+                record['value2'] = 1
+            if('PACK' in record.name):
+                record['value2']=2
