@@ -14,7 +14,7 @@
                           </style>
                       </head>
                       <t t-foreach="docs" t-as="pick">
-                          <table t-if="pick.state=='done'" style="width:100%;border-collapse: collapse;">
+                          <table t-if="pick.value2 == 1" t-if="pick.state=='done'" style="width:100%;border-collapse: collapse;">
                           <tr>
                               <th>Orden: <span style="font-size:16px" t-field="pick.name"/></th>
                           </tr>
@@ -26,12 +26,6 @@
                                   <td style="width:10%"><strong>Estantería(y)</strong></td>
                                   <td style="width:10%"><strong>Altura(z)</strong></td>
                               </tr>
-                              <tr t-if="pick.value2 == 2" style="width:100%">
-                                <td style="width:30%"><strong>Producto</strong></td>
-                                <td style="width:30%"><strong>Cantidad</strong></td>
-                                <td style="width:30%"><strong>Descripción</strong></td>
-                                <td style="width:10%"><strong>Validación</strong></td>
-                              </tr>
                               <t style="width:100%" t-foreach="pick.move_ids_without_package" t-as="move">
                                   <tr t-if="pick.value2 == 1">
                                       <td style="width:30%"><span t-field="move.product_id.name"/></td>
@@ -41,6 +35,20 @@
                                       <td style="width:30%"> <span t-field="move.location_id.posy"/></td>
                                       <td style="width:30%"> <span t-field="move.location_id.posz"/></td>
                                   </tr>
+                              </t>
+                          </table>
+                          
+                          <table t-if="pick.value2 == 2" t-if="pick.state=='done'" style="width:100%;border-collapse: collapse;">
+                            <tr>
+                              <th>Orden: <span style="font-size:16px" t-field="pick.name"/></th>
+                            </tr>
+                              <tr t-if="pick.value2 == 2" style="width:100%">
+                                <td style="width:30%"><strong>Producto</strong></td>
+                                <td style="width:30%"><strong>Cantidad</strong></td>
+                                <td style="width:30%"><strong>Descripción</strong></td>
+                                <td style="width:10%"><strong>Validación</strong></td>
+                              </tr>
+                              <t style="width:100%" t-foreach="pick.move_ids_without_package" t-as="move">
                                    <tr t-if="pick.value2 == 2">
                                       <td style="width:30%"><span t-field="move.product_id.name"/></td>
                                       <td style="width:30%"> <span t-field="move.product_qty"/></td>
