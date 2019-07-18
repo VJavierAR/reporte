@@ -20,15 +20,18 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','stock'],
 
     # always loaded
     'depends': [
-        'stock_account',
+        'stock',
     ],
     'data': [
         #'wizard/reporte.xml',
         'views/views.xml'
         #'data/ir_cron.xml',
     ],
+        'installable': True,
+    'application': True,
+    'auto_install': False,
 }
