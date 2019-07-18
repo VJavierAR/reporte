@@ -14,8 +14,8 @@
                           </style>
                       </head>
                       <t t-foreach="docs" t-as="pick">
-                          <table t-if="pick.value2 == 1" t-if="pick.state=='done'" style="width:100%;border-collapse: collapse;">
-                          <tr>
+                          <table t-if="pick.state=='done' and pick.value2 == 1" style="width:100%;border-collapse: collapse;">
+                          <tr >
                               <th>Orden: <span style="font-size:16px" t-field="pick.name"/></th>
                           </tr>
                             <tr t-if="pick.value2 == 1" style="width:100%">
@@ -38,8 +38,8 @@
                               </t>
                           </table>
                           
-                          <table t-if="pick.value2 == 2" t-if="pick.state=='done'" style="width:100%;border-collapse: collapse;">
-                            <tr>
+                          <table t-elif="pick.state=='done' and pick.value2 == 2" style="width:100%;border-collapse: collapse;">
+                            <tr t-if="pick.value2 == 2">
                               <th>Orden: <span style="font-size:16px" t-field="pick.name"/></th>
                             </tr>
                               <tr t-if="pick.value2 == 2" style="width:100%">
