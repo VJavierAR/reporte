@@ -8,7 +8,7 @@ class report(models.Model):
 	@api.depends('state')
 	def _value_pc(self):
 		for record in self:
-			if('PICK' in record.name):
+			if('SU' in record.name):
 				record['value2'] = 1
-			if('PACK' in record.name):
+			if('RE' in record.name):
 				record['value2']=2
